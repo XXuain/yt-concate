@@ -10,7 +10,9 @@ class DownLoadCaptions(Step):
     def process(self, data, inputs, utils):
         start = time.time()
         for url in data:
+            print('DownLoadCaptions: ', url, utils.caption_file_exists(url))
             if utils.caption_file_exists(url):
+                print('Check existing caption file for url', url)
                 continue
 
             try:

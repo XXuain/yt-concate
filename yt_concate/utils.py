@@ -27,7 +27,7 @@ class Utils:
 
     # 用 id 命名為字幕檔案名稱
     def get_caption_path(self, url):
-        return os.path.join(CAPTIONS_DIR, self.get_video_id_from_url(url) + 'txt.')
+        return os.path.join(CAPTIONS_DIR, self.get_video_id_from_url(url) + '.txt')
 
     # 檢查檔案是否存在
     def caption_file_exists(self, url):
