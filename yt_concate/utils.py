@@ -24,6 +24,6 @@ class Utils:
     # 檢查檔案是否存在
     def caption_file_exists(self, yt):
         filePath = yt.caption_filePath
-        os.path.exists(filePath) and os.path.getsize(filePath) > 0
+        return os.path.exists(filePath) and os.path.getsize(filePath) > 0
 
 

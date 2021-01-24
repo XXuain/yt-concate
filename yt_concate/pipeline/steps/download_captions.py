@@ -11,7 +11,7 @@ class DownLoadCaptions(Step):
         start = time.time()
         for yt in data:
             print('DownLoadCaptions: ', yt.id)
-            if utils.caption_file_exists(yt.url):
+            if utils.caption_file_exists(yt):
                 print('Check existing caption file for url', yt.url)
                 continue
 
@@ -30,3 +30,4 @@ class DownLoadCaptions(Step):
 
         end = time.time()
         print('took', end - start, 'second')
+        return data

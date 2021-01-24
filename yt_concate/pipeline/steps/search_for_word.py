@@ -1,4 +1,5 @@
 from yt_concate.pipeline.steps.step import Step
+from yt_concate.model.found import Found
 
 class SearchWord(Step):
     def process(self, data, inputs, utils):
@@ -7,9 +8,13 @@ class SearchWord(Step):
         found = []
         for yt in data:
             captions = yt.captions
+            if not captions:
+                continue
+
             for caption in captions:
                 if search_word in caption:
                     time = captions[caption]
-                    found.append((yt, caption, time))
-        
+                    f = Found(yt, caption, time)
+                    found.append(f)
+        print(found)
         return found
