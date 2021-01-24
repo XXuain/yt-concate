@@ -9,14 +9,14 @@ import time
 class DownLoadCaptions(Step):
     def process(self, data, inputs, utils):
         start = time.time()
-        for url in data:
-            print('DownLoadCaptions: ', url, utils.caption_file_exists(url))
-            if utils.caption_file_exists(url):
-                print('Check existing caption file for url', url)
+        for yt in data:
+            print('DownLoadCaptions: ', yt.id)
+            if utils.caption_file_exists(yt.url):
+                print('Check existing caption file for url', yt.url)
                 continue
 
             try:
-                source = YouTube(url)
+                source = YouTube(yt.url)
                 en_caption = source.captions.get_by_language_code('a.en')
                 en_caption_convert_to_srt = en_caption.generate_srt_captions()
             except (KeyError, AttributeError, pytube.exceptions.RegexMatchError) as e:
@@ -24,7 +24,7 @@ class DownLoadCaptions(Step):
                 continue
 
             # save the caption to a file named Output.txt
-            text_file = open(utils.get_caption_path(url), "w", encoding='utf-8')
+            text_file = open(utils.get_caption_path(yt.url), "w", encoding='utf-8')
             text_file.write(en_caption_convert_to_srt)
             text_file.close()
 
