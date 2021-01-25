@@ -26,4 +26,9 @@ class Utils:
         filePath = yt.caption_filePath
         return os.path.exists(filePath) and os.path.getsize(filePath) > 0
 
+    # 檢查影片是否存在
+    def video_file_exists(self, yt):
+        filePath = yt.video_filePath
+        return os.path.exists(filePath) and os.path.getsize(filePath) > 0
+
 
